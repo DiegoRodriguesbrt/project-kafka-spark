@@ -15960,3 +15960,5 @@ java.io.IOException: Connection to 4 was disconnected before the response was re
 [2025-05-22 17:45:27,279] INFO [GroupMetadataManager brokerId=6] Scheduling unloading of offsets and group metadata from __consumer_offsets-34 (kafka.coordinator.group.GroupMetadataManager)
 [2025-05-22 17:45:27,278] INFO [GroupMetadataManager brokerId=6] Finished unloading __consumer_offsets-2 for coordinator epoch OptionalInt[21]. Removed 0 cached offsets and 0 cached groups. (kafka.coordinator.group.GroupMetadataManager)
 [2025-05-22 17:45:27,279] INFO [GroupMetadataManager brokerId=6] Finished unloading __consumer_offsets-34 for coordinator epoch OptionalInt[20]. Removed 0 cached offsets and 0 cached groups. (kafka.coordinator.group.GroupMetadataManager)
+[2025-05-22 17:50:26,160] INFO [RaftManager id=6] Node 3 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-05-22 17:50:26,660] INFO [RaftManager id=6] Node 1 disconnected. (org.apache.kafka.clients.NetworkClient)

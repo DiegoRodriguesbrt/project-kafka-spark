@@ -19287,3 +19287,5 @@ java.io.IOException: Connection to kafka-broker-1:19092 (id: 4 rack: null) faile
 [2025-05-22 17:45:28,198] INFO [UnifiedLog partition=financial_transactions-10, dir=/tmp/kafka-logs] Truncating to 305695 has no effect as the largest offset in the log is 305694 (kafka.log.UnifiedLog)
 [2025-05-22 17:45:28,198] INFO [ReplicaFetcher replicaId=5, leaderId=6, fetcherId=0] Truncating partition financial_transactions-12 with TruncationState(offset=305079, completed=true) due to leader epoch and offset EpochEndOffset(errorCode=0, partition=12, leaderEpoch=7, endOffset=305079) (kafka.server.ReplicaFetcherThread)
 [2025-05-22 17:45:28,199] INFO [UnifiedLog partition=financial_transactions-12, dir=/tmp/kafka-logs] Truncating to 305079 has no effect as the largest offset in the log is 305078 (kafka.log.UnifiedLog)
+[2025-05-22 17:50:26,504] INFO [RaftManager id=5] Node 1 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-05-22 17:50:31,483] INFO [NodeToControllerChannelManager id=5 name=alter-partition] Node 2 disconnected. (org.apache.kafka.clients.NetworkClient)

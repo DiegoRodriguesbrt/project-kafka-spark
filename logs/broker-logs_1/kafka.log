@@ -18655,3 +18655,6 @@ java.io.IOException: Connection to kafka-broker-2:19092 (id: 5 rack: null) faile
 [2025-05-22 17:45:27,292] INFO [GroupMetadataManager brokerId=4] Finished unloading __consumer_offsets-35 for coordinator epoch OptionalInt[16]. Removed 0 cached offsets and 0 cached groups. (kafka.coordinator.group.GroupMetadataManager)
 [2025-05-22 17:45:27,293] INFO [GroupMetadataManager brokerId=4] Finished unloading __consumer_offsets-4 for coordinator epoch OptionalInt[19]. Removed 0 cached offsets and 0 cached groups. (kafka.coordinator.group.GroupMetadataManager)
 [2025-05-22 17:45:27,293] INFO [GroupMetadataManager brokerId=4] Finished unloading __consumer_offsets-1 for coordinator epoch OptionalInt[19]. Removed 0 cached offsets and 0 cached groups. (kafka.coordinator.group.GroupMetadataManager)
+[2025-05-22 17:50:26,660] INFO [RaftManager id=4] Node 3 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-05-22 17:50:26,661] INFO [RaftManager id=4] Node 1 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-05-22 17:50:28,175] INFO [GroupMetadataManager brokerId=4] Group schema-registry transitioned to Dead in generation 8 (kafka.coordinator.group.GroupMetadataManager)

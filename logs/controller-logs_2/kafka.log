@@ -13215,3 +13215,6 @@ Caused by: org.apache.kafka.common.errors.NotControllerException: The active con
 [2025-05-22 17:40:31,448] INFO [QuorumController id=2] Rejecting AlterPartition request from node 5 for __consumer_offsets-10 because the current partition epoch is 33, not 32. (org.apache.kafka.controller.ReplicationControlManager)
 [2025-05-22 17:40:31,449] INFO [QuorumController id=2] Rejecting AlterPartition request from node 5 for __consumer_offsets-6 because the current partition epoch is 33, not 32. (org.apache.kafka.controller.ReplicationControlManager)
 [2025-05-22 17:40:31,449] INFO [QuorumController id=2] Rejecting AlterPartition request from node 5 for __consumer_offsets-35 because the current partition epoch is 33, not 32. (org.apache.kafka.controller.ReplicationControlManager)
+[2025-05-22 17:50:26,385] INFO [RaftManager id=2] Node 1 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-05-22 17:50:26,386] INFO [RaftManager id=2] Node 3 disconnected. (org.apache.kafka.clients.NetworkClient)
+[2025-05-22 17:50:27,159] INFO [NodeToControllerChannelManager id=2 name=registration] Node 2 disconnected. (org.apache.kafka.clients.NetworkClient)
