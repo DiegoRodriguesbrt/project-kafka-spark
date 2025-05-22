@@ -1,10 +1,12 @@
-# project-kafka-spark
+# Projeto Kafka/Spark
 
 ## Visão Geral
 
 Este projeto demonstra uma arquitetura de processamento de dados em tempo real utilizando Apache Kafka, Apache Spark, Prometheus e Grafana, totalmente orquestrada via Docker Compose.
 
 ## Arquitetura
+
+![Arquitetura do Projeto](./project_kafka_spark_architecture.png)
 
 - **Producer**: Um script `producer.py` gera registros fictícios de transações financeiras e publica no tópico Kafka `financial_transactions`.
 - **Kafka**: Cluster composto por 3 controllers e 3 brokers para alta disponibilidade e tolerância a falhas.
