@@ -237,8 +237,9 @@ services:
             - "7077:7077"
             - "4040:4040"
             - "8081:8081"
-    spark-worker: &spark-worker-image
+    spark-worker-n1: &spark-worker-image
         <<: *spark-common
+        container_name: spark-worker-n1
         command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
         depends_on:
             - spark-master
@@ -247,11 +248,13 @@ services:
             SPARK_WORKER_CORES: 2
             SPARK_WORKER_MEMORY: 2g
             SPARK_MASTER_URL: spark://spark-master:7077
-    spark-worker-2:
+    spark-worker-n2:
         <<: *spark-worker-image
-    
-    spark-worker-3:
+        container_name: spark-worker-n2
+        
+    spark-worker-n3:
         <<: *spark-worker-image
+        container_name: spark-worker-n3
 
     #MONITORING
     prometheus:

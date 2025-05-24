@@ -11,13 +11,12 @@ SPARK_STATE_DIR = "/mnt/spark-state"
 
 spark = (
     SparkSession.builder
-        .appName("KafkaConsumerFinancialTransactions")
+        .appName("KafkaConsumerFinancialTransactionsAggregator")
         .config("spark.jars.packages", "org.apache.spark:spark-sql-kafka-0-10_2.12:3.5.0")
         .config("spark.sql.streaming.checkpointLocation", SPARK_CHECKPOINT_DIR)
         .config("spark.sql.streaming.stateStore.stateStoreDir", SPARK_STATE_DIR)
-        .config("spark.sql.shuffle.partitions", "40")
+        .config("spark.sql.shuffle.partitions", "20")
         .config("spark.sql.streaming.stateStore.stateSchemaCheck", "false")
-        .config("spark.sql.streaming.schemaInference", "true")
         .getOrCreate()
 )
 
@@ -85,7 +84,7 @@ aggregated_query = (
     .option("topic", AGGREGATES_TOPIC)
     .option("checkpointLocation", f"{SPARK_CHECKPOINT_DIR}/aggregates")
     .option("maxOffsetsPerTrigger", 5000)
-    .trigger(processingTime="5 seconds")
+    .trigger(processingTime="10 seconds")
 )
 
 aggregated_query = aggregated_query.start().awaitTermination()

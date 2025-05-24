@@ -24,10 +24,10 @@ Este projeto demonstra uma arquitetura de processamento de dados em tempo real u
    docker-compose up --build
    ```
 3. **Acesse os serviços**
-   - Kafka Brokers: `localhost:29092`, `localhost:39092`, `localhost:49092`
+   - Console de administração Kafka: [http://localhost:8080](http://localhost:8080)
    - Prometheus: [http://localhost:9090](http://localhost:9090)
    - Grafana: [http://localhost:3000](http://localhost:3000) (usuário/senha padrão: admin/admin)
-   - Console de administração Kafka: [http://localhost:8080](http://localhost:8080)
+   
 
 ## Estrutura dos Principais Arquivos
 

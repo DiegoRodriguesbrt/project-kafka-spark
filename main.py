@@ -10,9 +10,10 @@ import threading
 
 
 KAFKA_BROKERS = "localhost:29092,localhost:39092,localhost:49092"
-NUM_PARTITIONS = 20
+NUM_PARTITIONS = 6
 REPLICATION_FACTOR = 3
-TOPIC_NAME = "financial_transactions"
+FINANCIAL_TRANSACTIONS_TOPIC = "financial_transactions"
+AGGREGATION_TOPIC = "aggregated_transactions"
 
 logging.basicConfig(
     level=logging.INFO
@@ -27,7 +28,7 @@ producer_config = {
     'batch.num.messages': 10000,
     'linger.ms': 100,
     'acks': 1,
-    'compression.type': 'gzip'
+    'compression.type': 'gzip',
 }
 
 producer = Producer(producer_config)
@@ -79,7 +80,7 @@ def produce_transaction(thread_id):
 
             try:
                 producer.produce(
-                    topic =TOPIC_NAME,
+                    topic =FINANCIAL_TRANSACTIONS_TOPIC,
                     key = transaction['id_transacao'],
                     value = json.dumps(transaction).encode('utf-8'),
                     on_delivery = delivery_report
@@ -112,12 +113,49 @@ def producer_data_parallel(num_threads):
             
     except Exception as e:
         logger.error(f"Error sending transaction: {e}")
-  
+
+
+def create_aggregated_topic(aggregated_topic_name):
+    admin_client = AdminClient({"bootstrap.servers": KAFKA_BROKERS})
+    topic_name = aggregated_topic_name
+    num_partitions = 6
+    replication_factor = 3 
+
+    metadata = admin_client.list_topics(timeout=10)
+    if topic_name not in metadata.topics:
+        topic = NewTopic(
+            topic=topic_name,
+            num_partitions=num_partitions,
+            replication_factor=replication_factor
+        )
+        fs = admin_client.create_topics([topic])
+        for topic, future in fs.items():
+            try:
+                future.result()
+                print(f"Tópico {topic_name} criado com {num_partitions} partições.")
+            except Exception as e:
+                print(f"Erro ao criar tópico {topic_name}: {e}")
+    else:
+        print(f"Tópico {topic_name} já existe.")
+
+
+
+def delete_topics(topics):
+    admin_client = AdminClient({"bootstrap.servers": KAFKA_BROKERS})
+    fs = admin_client.delete_topics(topics, operation_timeout=30)
+    for topic, future in fs.items():
+        try:
+            future.result()
+            logger.info(f"Tópico {topic} deletado com sucesso.")
+        except Exception as e:
+            logger.warning(f"Falha ao deletar tópico {topic}: {e}")
 
 if __name__ == "__main__":
-
-   create_topic(TOPIC_NAME)
-   producer_data_parallel(3)
+    # delete_topics([FINANCIAL_TRANSACTIONS_TOPIC,AGGREGATION_TOPIC])
+    # time.sleep(5)
+    create_topic(FINANCIAL_TRANSACTIONS_TOPIC)
+    create_aggregated_topic(AGGREGATION_TOPIC)
+    producer_data_parallel(3)
 
    
     

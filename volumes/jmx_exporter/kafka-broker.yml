@@ -124,3 +124,11 @@ rules:
   type: GAUGE
   labels:
     "$4": "$5"
+- pattern: 'java.lang:type=OperatingSystem'
+  name: jvm_available_processors
+  attr: AvailableProcessors
+  type: GAUGE
+- pattern: 'java.lang:type=OperatingSystem'
+  name: jvm_available_processors
+  value: $AvailableProcessors
+  type: GAUGE
