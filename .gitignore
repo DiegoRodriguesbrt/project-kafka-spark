@@ -1,0 +1,5 @@
+mnt/checkpoints/
+mnt/spark-checkpoints/
+mnt/spark-state/
+__pycache__/
+*.pyc
